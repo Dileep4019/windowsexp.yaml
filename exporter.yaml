@@ -21,6 +21,6 @@
 
     - name: Start Windows Exporter Service
       win_service:
-        name: Prometheus-Windows-Exporter
+        name: Windows-Exporter
         state: started
       when: download_result.changed
