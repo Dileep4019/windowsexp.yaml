@@ -16,8 +16,8 @@
   
     - name: Create Windows Exporter Service
       win_shell: |
-        New-Service -Name "Prometheus-Windows-Exporter" -BinaryPathName "C:\PrometheusExporter\windows_exporter.exe --collectors.enabled=default"
-        Start-Service "Prometheus-Windows-Exporter"
+        New-Service -Name "Windows-Exporter" -BinaryPathName "C:\PrometheusExporter\windows_exporter.exe --collectors.enabled=default"
+        Start-Service "Windows-Exporter1"
       when: download_result.changed
 
     - name: Set Windows Exporter to Auto-Start
