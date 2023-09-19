@@ -6,8 +6,8 @@
   tasks:
     - name: Fetch file from SFTP server
       fetch:
-        src: "sftp://inndata@10.10.5.76/home/inndata/"
-        dest: "/root/testfile.txt"
+        src: "sftp://inndata@10.10.5.76/home/inndata/test.txt"
+        dest: "/root/test.txt"
         flat: yes
         validate_certs: no
         fail_on_missing: yes
@@ -15,4 +15,4 @@
     - name: Copy file to Windows server
       win_copy:
         src: "/root/testfile.txt"
-        dest: "C:\\PrometheusExporter\\testfile.txt"
+        dest: "C:\\PrometheusExporter\\test.txt"
