@@ -1,6 +1,6 @@
 ---
 - name: Install Prometheus Windows Exporter
-  hosts: 10.10.5.81
+  hosts: 10.10.5.182
   gather_facts: no  # Disable facts gathering as it's not needed for this task
   tasks:
     - name: Create Exporter Directory
