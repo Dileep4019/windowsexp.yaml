@@ -6,7 +6,7 @@
   tasks:
     - name: Fetch file from SFTP server
       fetch:
-        url: "sftp://kap-user@10.10.5.76/kap-user/test"
+        src: "sftp://kap-user@10.10.5.76/kap-user/test"
         dest: "/tmp/test"
         validate_certs: no
 
