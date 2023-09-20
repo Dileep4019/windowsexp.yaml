@@ -1,4 +1,4 @@
-- name: Transfer files from SFTP to Windows
+- name: Transfer file from SFTP to Windows
   hosts: 10.10.5.183  # Replace with your target host/group
 
   tasks:
