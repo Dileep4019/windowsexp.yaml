@@ -1,16 +1,13 @@
 ---
-- name: Transfer file from SFTP to Windows
-  hosts: 10.10.5.183
+- name: Transfer file from SFTP to AWX
+  hosts: 10.10.5.76
   gather_facts: no
 
   tasks:
     - name: Fetch file from SFTP server
       fetch:
-        src: "sftp://inndata@10.10.5.76//home//inndata//test"
-        dest: "/tmp/test"
+        src: "sftp://inndata@10.10.5,76/home/inndatatest.txt"
+        dest: "/path/on/awx/host/test.txt"
+        flat: yes
         validate_certs: no
-
-    - name: Copy file to Windows server
-      win_copy:
-        src: "/tmp/test"
-        dest: "C:\\prometheusexporter\\testfile"
+        fail_on_missing: yes
