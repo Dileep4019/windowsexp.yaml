@@ -15,5 +15,5 @@
       win_copy:
         src: "/tmp/test"
         dest: "C:\\PrometheusExporter\\"
-        remote_src: no
+        remote_src: yes
 
