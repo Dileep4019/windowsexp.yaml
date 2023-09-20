@@ -1,11 +1,11 @@
 - name: Transfer file from SFTP to Windows
   hosts: 10.10.5.183
-  gather_facts: no
+  gather_facts: yes
 
   tasks:
     - name: Fetch file from SFTP server
       fetch:
-        src: "/kap-user/test"  # Make sure this is the correct path on the SFTP server
+        src: "sftp://kap-user@10.10.5.76/kap-user/test"  # Make sure this is the correct path on the SFTP server
         dest: "/tmp/test"
         flat: yes
         validate_certs: no
