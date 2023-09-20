@@ -9,7 +9,7 @@
         $sftpPassword = "123!@#"
         $sftpHost = "10.10.5.76"
         $remotePath = "/kap-user/test/"
-        $localPath = "C:\\Users\\inndata-dev-003\\Documents"
+        $localPath = "C:\\Users\\Public\\Downloads"
 "
 
         $sftpSession = New-SFTPSession -ComputerName $sftpHost -Credential (New-Object PSCredential -ArgumentList $sftpUser, (ConvertTo-SecureString -String $sftpPassword -AsPlainText -Force))
