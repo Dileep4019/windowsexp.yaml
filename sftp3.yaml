@@ -7,6 +7,6 @@
       fetch:
         src: "sftp://kap-user@10.10.5.76/kap-user/testfile.txt"
         dest: "/tmp/testfile.txt"
-        flat: yes
-        validate_certs: no
-        fail_on_missing: yes
+        flat: no
+        validate_certs: yes
+        fail_on_missing: no
