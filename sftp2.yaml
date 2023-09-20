@@ -1,18 +1,11 @@
 ---
-- name: Transfer file from SFTP to Windows (Using fetch and win_copy)
+- name: Transfer file from SFTP to Windows
   hosts: 10.10.5.183
   gather_facts: yes
 
   tasks:
-    - name: Fetch file from SFTP server
-      fetch:
-        src: "sftp://kap-user@10.10.5.183/kap-user/newdir"
-        dest: "/tmp/newdir"
-        flat: yes
-        validate_certs: no
-        fail_on_missing: yes
-
-    - name: Copy file to Windows server
+    - name: Copy file from SFTP to Windows
       win_copy:
-        src: "/tmp/newdir"
-        dest: "C:\\Prometheus\\newdir"
+        src: "/tmp/test"  # Adjust the source path
+        dest: "C:\\PrometeusExporter\\test"
+      delegate_to: localhost
