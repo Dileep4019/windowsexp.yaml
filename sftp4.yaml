@@ -1,5 +1,6 @@
+---
 - name: Transfer files from SFTP to Windows
-  hosts: 10.10.5.183 # Replace with your target host/group
+  hosts: 10.10.5.183  # Replace with your target host/group
 
   tasks:
     - name: Download files from SFTP
@@ -13,5 +14,5 @@
 
     - name: Copy files to Windows server
       win_copy:
-        src: "C:\\Users\\inndata-dev-003\\Documents"
-        dest: "C:\\PrometheusExporter"
+        src: "C:\\path\\to\\downloaded\\files\\*"
+        dest: "C:\\path\\to\\destination\\folder\\"
