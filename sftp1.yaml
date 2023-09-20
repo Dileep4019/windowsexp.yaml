@@ -5,7 +5,7 @@
   tasks:
     - name: Fetch file from SFTP server
       fetch:
-        src: "/kap-user/test"  # Adjust this to the correct SFTP path
+        src: "sftp://kap-user@10.10.5.76/kap-user/test"  # Adjust this to the correct SFTP path
         dest: "/tmp/test"
         flat: yes
         validate_certs: no
