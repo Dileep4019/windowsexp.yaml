@@ -1,15 +1,18 @@
 ---
 - name: Transfer files from SFTP to Windows
-  hosts: 10.10.5.183 # Replace with your target host/group
+  hosts: windows_server  # Replace with your target host/group
 
   tasks:
     - name: Download files from SFTP
       win_shell: |
-        "C:\\path\\to\\psftp.exe" kap-user@10.10.5.183 -pw 123!@# -b sftp_commands.txt
-      args:
-        executable: powershell.exe
-      environment:
-        PSFTP_PASS: "123!@#"  # Replace with your SFTP password
+       # Create a PowerShell script file to execute sftp command
+       echo "sftp kap-user@10.10.5.76:/kap-user/test/ /root/awx/" > sftp_script.ps1
+       # Execute the PowerShell script
+       powershell.exe -File sftp_script.ps1
+    args:
+      executable: powershell.exe
+    environment:
+      PSFTP_PASS: "sftp_password"  # Replace with your SFTP password
 
     - name: Copy files to Windows server
       win_copy:
