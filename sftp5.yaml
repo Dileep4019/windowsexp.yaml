@@ -20,5 +20,5 @@
 
     - name: Copy files to destination folder
       win_copy:
-        src: "/kap-user/test/"
+        src: "\kap-user\test"
         dest: "C:\\PrometheusExporter"
