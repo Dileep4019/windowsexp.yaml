@@ -1,11 +1,12 @@
 ---
 - name: Transfer files from SFTP to Windows
-  hosts: 10.10.5.183  # Replace with your target host/group
+  hosts: 10.10.5.183 # Replace with your target host/group
 
   tasks:
     - name: Download files from SFTP
       win_shell: |
-        "C:\\path\\to\\psftp.exe" kap-user@10.10.5.76 -pw 123!@# -b sftp_commands.txt
+        # Your psftp or sftp command goes here to download files
+        # Example: psftp.exe -b sftp_commands.txt kap-user@10.10.5.76
       args:
         executable: powershell.exe
       environment:
@@ -14,4 +15,4 @@
     - name: Copy files to Windows server
       win_copy:
         src: "C:\\Users\\inndata-dev-003\\Documents"
-        dest: "C:\\PrometheusExporter"
+        dest: "C:\\PrometheusExporter"
