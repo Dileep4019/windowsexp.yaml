@@ -1,0 +1,11 @@
+---
+- name: Transfer file from SFTP to Windows (Using win_copy)
+  hosts: 10.10.5.183
+  gather_facts: no
+
+  tasks:
+    - name: Copy file from SFTP to Windows
+      win_copy:
+        src: "/tmp/test"
+        dest: "C:\\PrometeusExporter\\testfile.txt"
+      delegate_to: localhost
