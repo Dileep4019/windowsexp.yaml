@@ -6,13 +6,13 @@
   tasks:
     - name: Fetch file from SFTP server
       fetch:
-        src: "sftp://kap-user@10.10.5.183/kap-user/test"
-        dest: "/tmp/test"
+        src: "sftp://kap-user@10.10.5.183/kap-user/newdir"
+        dest: "/tmp/newdir"
         flat: yes
         validate_certs: no
         fail_on_missing: yes
 
     - name: Copy file to Windows server
       win_copy:
-        src: "/tmp/test"
-        dest: "C:\\Prometheus\\test"
+        src: "/tmp/newdir"
+        dest: "C:\\Prometheus\\newdir"
