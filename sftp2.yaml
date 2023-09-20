@@ -7,5 +7,5 @@
     - name: Copy file from SFTP to Windows
       win_copy:
         src: "/tmp"
-        dest: "C:\\PrometeusExporter\\test"
+        dest: "C:\\PrometeusExporter"
       delegate_to: localhost
