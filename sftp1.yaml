@@ -6,7 +6,7 @@
   tasks:
     - name: Fetch file from SFTP server
       fetch:
-        src: "sftp://inndata@10.10.5.76/home/inndata/test.txt"
+        src: "sftp://inndata@10.10.5.76//home//inndata//test.txt"
         dest: "/tmp/test.txt"
         validate_certs: no
 
