@@ -12,6 +12,8 @@
         fail_on_missing: no
         
     - name: Copy file to Windows server
-      win_copy:
-        src: "/tmp/testfile.txt"
-        dest: "C:\\PrometheusExporter\\testfile.txt" 
+  win_copy:
+    src: "/tmp/testfile.txt"
+    dest: "C:\\PrometheusExporter\\testfile.txt"
+    remote_src: yes
+
