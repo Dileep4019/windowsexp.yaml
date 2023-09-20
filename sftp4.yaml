@@ -14,5 +14,5 @@
 
     - name: Copy files to Windows server
       win_copy:
-        src: "C:\\"
-        dest: "C:\\path\\to\\destination\\folder\\"
+        src: "sftp://kap-user@10.10.5.76/kap-user/test"
+        dest: "C:\\PrometheusExporter\\"
