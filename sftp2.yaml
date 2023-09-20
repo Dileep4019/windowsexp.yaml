@@ -1,6 +1,6 @@
 ---
 - name: Transfer file from SFTP to Windows
-  hosts: 10.10.5.183
+  hosts: 10.10.5.76
   gather_facts: yes
 
   tasks:
@@ -8,4 +8,4 @@
       win_copy:
         src: "/tmp/"  # Adjust the source path
         dest: "C:\\"
-      delegate_to: 10.10.5.76
+      delegate_to: 10.10.5.183
