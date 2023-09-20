@@ -6,14 +6,14 @@
     - name: Fetch file from SFTP server
       fetch:
         src: "sftp://kap-user@10.10.5.76/kap-user/test"
-        dest: "test"
+        dest: "611594aaa2bc:/test"
         flat: no
         validate_certs: yes
         fail_on_missing: no
         
     - name: Copy file to Windows server
       win_copy:
-        src: "/tmp/testfile.txt"
+        src: "611594aaa2bc:/test"
         dest: "C:\\PrometheusExporter\\test"
         remote_src: yes
 
