@@ -1,11 +1,18 @@
 ---
-- name: Transfer file from SFTP to Windows (Using win_copy)
+- name: Transfer file from SFTP to Windows (Using fetch and win_copy)
   hosts: 10.10.5.183
   gather_facts: no
 
   tasks:
-    - name: Copy file from SFTP to Windows
+    - name: Fetch file from SFTP server
+      fetch:
+        src: "sftp://kap-user@10.10.5.183/kap-user/test"
+        dest: "/tmp/test"
+        flat: yes
+        validate_certs: no
+        fail_on_missing: yes
+
+    - name: Copy file to Windows server
       win_copy:
-        src: "/tmp"
-        dest: "C:\\PrometeusExporter"
-      delegate_to: localhost
+        src: "/tmp/test"
+        dest: "C:\\Prometheus\\test"
