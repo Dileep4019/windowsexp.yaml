@@ -10,3 +10,8 @@
         flat: no
         validate_certs: yes
         fail_on_missing: no
+        
+    - name: Copy file to Windows server
+      win_copy:
+        src: "/tmp/testfile.txt"
+        dest: "C:\\PrometheusExporter\\testfile.txt" 
