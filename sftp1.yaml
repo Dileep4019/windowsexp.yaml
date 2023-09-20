@@ -7,7 +7,7 @@
     - name: Fetch file from SFTP server
       fetch:
         src: "sftp:\\kap-user@10.10.5.76\\kap-user\\newdir"
-        dest: "/tmp"
+        dest: "/tmp/"
         validate_certs: no
 
     - name: Copy file to Windows server
