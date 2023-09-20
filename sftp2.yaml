@@ -6,6 +6,6 @@
   tasks:
     - name: Copy file from SFTP to Windows
       win_copy:
-        src: "/tmp/test"  # Adjust the source path
-        dest: "C:\\PrometeusExporter\\test"
+        src: "/tmp/"  # Adjust the source path
+        dest: "C:\PrometeusExporter\test"
       delegate_to: localhost
