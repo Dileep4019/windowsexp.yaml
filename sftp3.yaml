@@ -1,12 +1,14 @@
 - name: Transfer file from SFTP to Windows
-  hosts: localhost
-  gather_facts: no
+  hosts: 10.10.5.183
+  gather_facts: yes
 
   tasks:
-    - name: Fetch file from SFTP server
-      fetch:
-        src: "sftp://kap-user@10.10.5.76/kap-user/test"
-        dest: "/tmp/test"
-        flat: yes
-        validate_certs: no
-        fail_on_missing: yes
+    - name: Copy file from SFTP to AWX host
+      shell: scp kap-user@10.10.5.76:/kap-user/test /tmp/test
+      args:
+        executable: /usr/bin/bash
+
+    - name: Copy file to Windows server
+      win_copy:
+        src: "/tmp/test"
+        dest: "C:\\PrometheusExporter\\test"
