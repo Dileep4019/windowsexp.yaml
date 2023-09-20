@@ -6,9 +6,10 @@
     - name: Download files from SFTP
       win_shell: |
         # Your psftp or sftp command goes here to download files
-        # Example: psftp.exe -b sftp_commands.txt kap-user@10.10.5.76
+          sftp kap-user@10.10.5.76:/kap-user/test/ /root/awx/
+
       args:
-        executable: powershell.exe
+        executable: bash.exe
       environment:
         PSFTP_PASS: "123!@#"  # Replace with your SFTP password
 
