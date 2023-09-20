@@ -1,28 +1,28 @@
-- name: Transfer file from SFTP to Windows
+---
+- name: Transfer files from SFTP to Windows
   hosts: 10.10.5.183  # Replace with your target host/group
 
   tasks:
     - name: Download files from SFTP
-      delegate_to: localhost
-      gather_facts: yes
+      delegate_to: 10.10.5.76
       vars:
         sftp_user: "kap-user"
         sftp_host: "10.10.5.76"
         sftp_password: "123!@#"
         remote_path: "/kap-user/test"
-        local_path: "/root"
-      block:
-        - name: Create local directory if not exists
-          file:
-            path: "{{ local_path }}"
-            state: directory
+        local_path: "/root/test"
 
-        - name: Download files
-          fetch:
-            src: "{{ lookup('pipe', 'sshpass -p ' + sftp_password + ' sftp ' + sftp_user + '@' + sftp_host + ' ls ' + remote_path) | from_yaml }}"
-            dest: "{{ local_path }}"
-            flat: yes
-          delegate_to: localhost
+      - name: Create local directory if not exists
+        file:
+          path: "{{ local_path }}"
+          state: directory
+
+      - name: Download files
+        fetch:
+          src: "{{ lookup('pipe', 'sshpass -p ' + sftp_password + ' sftp ' + sftp_user + '@' + sftp_host + ' ls ' + remote_path) | from_yaml }}"
+          dest: "{{ local_path }}"
+          flat: yes
+        delegate_to: localhost
 
     - name: Copy files to Windows server
       win_copy:
