@@ -6,6 +6,6 @@
   tasks:
     - name: Copy file from SFTP to Windows
       win_copy:
-        src: ""sftp://kap-user@10.10.5.76/kap-user/test""  # Adjust the source path
+        src: "sftp://kap-user@10.10.5.76/kap-user/test"  # Adjust the source path
         dest: "C:\\Prometheus\\test"
       delegate_to: localhost
