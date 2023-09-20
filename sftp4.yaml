@@ -5,13 +5,14 @@
   tasks:
     - name: Download files from SFTP
       win_shell: |
-        # Your psftp or sftp command goes here to download files
-          sftp kap-user@10.10.5.76:/kap-user/test/ /root/awx/
-
+        # Create a PowerShell script file to execute sftp command
+        echo "sftp kap-user@10.10.5.76:/kap-user/test/ /root/awx/" > sftp_script.ps1
+        # Execute the PowerShell script
+        powershell.exe -File sftp_script.ps1
       args:
-        executable: bash.exe
+      executable: powershell.exe
       environment:
-        PSFTP_PASS: "123!@#"  # Replace with your SFTP password
+      PSFTP_PASS: "123!@#"  # Replace with your SFTP password
 
     - name: Copy files to Windows server
       win_copy:
