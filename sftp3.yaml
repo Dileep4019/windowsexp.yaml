@@ -5,8 +5,8 @@
   tasks:
     - name: Fetch file from SFTP server
       fetch:
-        src: "sftp://kap-user@10.10.5.76/kap-user/test.txt"
-        dest: "/path/on/awx/host/test.txt"
+        src: "sftp://kap-user@10.10.5.76/kap-user/test"
+        dest: "/tmp/test"
         flat: yes
         validate_certs: no
         fail_on_missing: yes
