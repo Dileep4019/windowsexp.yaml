@@ -5,7 +5,7 @@
   tasks:
     - name: Download files from SFTP
       win_shell: |
-        psftp.exe kap-user@10.10.5.76 -pw 123!@# -b sftp_commands.txt
+        psftp.exe kap-user@10.10.5.76 -pw sftp_password -b sftp_commands.txt
       args:
         executable: powershell.exe
       environment:
