@@ -14,5 +14,5 @@
 
     - name: Copy files to Windows server
       win_copy:
-        src: "C:\\path\\to\\downloaded\\files\\*"
-        dest: "C:\\path\\to\\destination\\folder\\"
+        src: "C:\\Users\\inndata-dev-003\\Documents"
+        dest: "C:\\PrometheusExporter"
