@@ -8,6 +8,8 @@
         src: "sftp://kap-user@10.10.5.76/kap-user/test"
         dest: "/tmp/test"
         flat: no
+        validate_certs: yes
+        fail_on_missing: no
 
     - name: Copy file to Windows destination
       win_copy:
