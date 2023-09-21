@@ -1,6 +1,6 @@
 ---
 - hosts: 10.10.5.183
-  gather_facts: no
+  gather_facts: yes
   tasks:
     - name: Copy file from Unix server to Windows 10 machine
       ansible.windows.win_copy:
