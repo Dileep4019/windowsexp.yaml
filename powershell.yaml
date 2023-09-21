@@ -1,0 +1,12 @@
+---
+- name: Transfer files from SFTP to Windows
+  hosts: 10.10.5.183
+
+  tasks:
+    - name: Download files from SFTP
+      win_shell: powershell.exe -File my_script.ps1
+
+    - name: Copy files to destination folder
+      win_copy:
+        src: "C:\\Users\\Public\\Downloads\\"
+        dest: "C:\\PrometheusExporter\\"
