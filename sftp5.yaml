@@ -4,7 +4,7 @@
   - name: Copy files from FileZilla SFTP server to Windows 10
     win_file:
       src: ftp://{{ sftp_username }}:{{ sftp_password }}@{{ sftp_host }}/{{ sftp_path }}/{{ file_name }}
-      dest: C:\\PrometheusExporter\\
+      dest: C:\PrometheusExporter\{{ file_name }}
       state: file
       
   vars:
