@@ -1,5 +1,8 @@
 ---
 - hosts: 10.10.5.183
+  vars:
+      ansible_python_interpreter: /usr/bin/python3
+
   tasks:
   - name: Ensure directory exists
     win_file:
