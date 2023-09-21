@@ -1,0 +1,14 @@
+---
+- name: testing windows
+  hosts: 10.10.5.183
+  tasks:
+
+     - name: sftp transfer files
+       expect:
+        win_command: "winscp.com /command \"open sftp://mysftp@10.10.5.76\" \"get /sftp-upload/Ping/Replicadb C:\\kapalya-drivers\" \"exit\""
+        responses:
+          "(yes/no)?": "yes\n"
+          "password: ": "123!@#\n"
+        timeout: 30
+        echo: yes
+        spawn: yes
