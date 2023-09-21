@@ -11,7 +11,7 @@
     source_path: "/kap-user/"
     source_filename: "test"
   tasks:
-    - name: Copy file from Unix server to Windows 10 machine
+    - name: Copy file from Unix server to Windows 10
       ansible.windows.win_copy:
         src: "{{ source_username }}:{{ source_password }}@{{ source_host }}{{ source_path }}{{ source_filename }}"
         dest: "{{ destination_path }}\\{{ source_filename }}"
