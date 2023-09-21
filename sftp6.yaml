@@ -1,15 +1,18 @@
 ---
-- hosts: 10.10.5.183
-  gather_facts: yes
+- name: Copy file from Unix server to Windows 10 machine
+  hosts: 10.10.5.183
+  gather_facts: no
+  vars:
+    destination_host: 10.10.5.183
+    destination_path: "C:\\PrometheusExporter"
+    source_host: 10.10.5.76
+    source_username: inndata
+    source_password: "123!@#"
+    source_path: "/kap-user/"
+    source_filename: "test"
   tasks:
     - name: Copy file from Unix server to Windows 10 machine
       ansible.windows.win_copy:
-        src: /kap-user/test
-        dest: C:\Users
-      delegate_to: "{{ ansible_ssh_host }}"
-      become: yes
-      become_user: inndata
-  vars:
-    ansible_ssh_host: 10.10.5.76
-    ansible_ssh_user: inndata
-    ansible_ssh_pass: 123!@#
+        src: "{{ source_username }}:{{ source_password }}@{{ source_host }}{{ source_path }}{{ source_filename }}"
+        dest: "{{ destination_path }}\\{{ source_filename }}"
+      delegate_to: unix_server
