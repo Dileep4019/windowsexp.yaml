@@ -14,5 +14,5 @@
     - name: Copy file to Windows destination
       win_copy:
         src: "/inndata/testfile.txt"
-        dest: "C:\PrometheusExporter\"
+        dest: "C:\\PrometheusExporter\\"
         remote_src: yes
