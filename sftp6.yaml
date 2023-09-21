@@ -12,7 +12,7 @@
     destination_path: "C:\\PrometheusExporter"
 
   tasks:
-  - name: transfer file from unix to windows
+  - name: copy file to Windows server
     ansible.windows.win_copy:
       src: "{{ source_path }}{{ source_filename }}"
       dest: "{{ destination_path }}\\{{ source_filename }}"
