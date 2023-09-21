@@ -14,7 +14,7 @@
   - name: Copy file to Windows 10
     win_copy:
       src: "/tmp/{{ file_name }}"
-      dest: "C:\PrometheusExporter\"{{ file_name }}""
+      dest: "C:\\PrometheusExporter\\{{ file_name }}"
 
   - name: Remove the downloaded file on Ansible Control Machine
     file:
