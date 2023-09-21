@@ -1,13 +1,7 @@
 ---
-- name: Transfer files from SFTP to Windows
-  hosts: 10.10.5.183
-  gather_facts: yes
-
+- hosts: 10.10.5.183
   tasks:
-    - name: Run WinSCP Command
-      win_command: "winscp.com /command \"open sftp://mysftp@10.10.5.76\" \"get /sftp-upload/Ping/Replicadb C:\\kapalya-drivers\" \"exit\""
-      register: win_command_result
-
-    - name: Display WinSCP Output
-      debug:
-        var: win_command_result.stdout_lines
+    - name: Copy files from FileZilla SFTP server to Windows 10
+      win_copy:
+        src: "sftp://kap-user:123!@#@10.10.5.76/kap-user/test"
+        dest: "C:\\PrometheusExporter\\{{ file_name }} "
