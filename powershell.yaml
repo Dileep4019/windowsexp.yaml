@@ -4,7 +4,7 @@
 
   tasks:
     - name: Download files from SFTP
-      win_shell: powershell.exe -File my_script.ps1
+      win_shell: powershell.exe -File download_sftp.ps1
 
     - name: Copy files to destination folder
       win_copy:
