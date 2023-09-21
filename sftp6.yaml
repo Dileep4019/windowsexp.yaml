@@ -1,22 +1,15 @@
-- name: Transfer files from SFTP to Windows
-  hosts: 10.10.5.183
-
+---
+- hosts: 10.10.5.183
+  gather_facts: no
   tasks:
-    - name: Download files from SFTP
-      script: |
-        $sftpUser = "kap-user"
-        $sftpPassword = "123!@#"
-        $sftpHost = "10.10.5.76"
-        $remotePath = "/kap-user/test"
-        $localPath = "C:\\Users\\Public\\Downloads\\"
-        
-        $sftpSession = New-SFTPSession -ComputerName $sftpHost -Credential (New-Object PSCredential -ArgumentList $sftpUser, (ConvertTo-SecureString -String $sftpPassword -AsPlainText -Force))
-        Get-SFTPFile -SessionId $sftpSession.SessionId -RemoteFile $remotePath -LocalPath $localPath
-        Remove-SFTPSession -SessionId $sftpSession.SessionId
-      args:
-        executable: powershell.exe
-
-    - name: Copy files to destination folder
-      win_copy:
-        src: "C:\\Users\\Public\\Downloads\\"
-        dest: "C:\\PrometheusExporter"
+    - name: Copy file from Unix server to Windows 10 machine
+      ansible.windows.win_copy:
+        src: /kap-user/test
+        dest: C:\PrometheusExporter\
+      delegate_to: "{{ ansible_ssh_host }}"
+      become: yes
+      become_user: inndata
+  vars:
+    ansible_ssh_host: 10.10.5.76
+    ansible_ssh_user: inndata
+    ansible_ssh_pass: 123!@#
