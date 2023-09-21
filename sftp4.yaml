@@ -16,5 +16,5 @@
 
     - name: Copy files to Windows server
       win_copy:
-        src: "\root\awx/"
+        src: "\\root\\awx"
         dest: "C:\\PrometheusExporter"
