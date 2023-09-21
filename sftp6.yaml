@@ -19,4 +19,4 @@
     - name: Copy files to destination folder
       win_copy:
         src: "C:\\Users\\Public\\Downloads\\"
-        dest: "C:\\PrometheusExporter\\"
+        dest: "C:\\PrometheusExporter"
