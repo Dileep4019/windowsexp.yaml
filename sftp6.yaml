@@ -13,8 +13,6 @@
 
   tasks:
   - name: Copy file from Unix server to Windows
-    ansible.windows.win_copy:
-      src: "{{ source_path }}{{ source_filename }}"
-      dest: "{{ destination_path }}\\{{ source_filename }}"
-
+    ansible windows_server -m win_copy -a "src={{ source_path }}{{ source_filename }} dest='{{ destination_path }}\\{{ source_filename }}"
+    
     become: no
