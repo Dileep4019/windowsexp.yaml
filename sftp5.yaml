@@ -8,7 +8,7 @@
         $sftpUser = "kap-user"
         $sftpPassword = "123!@#"
         $sftpHost = "10.10.5.76"
-        $remotePath = "/kap-user/test/"
+        $remotePath = "/kap-user/test"
         $localPath = "C:\Users\Public\Downloads"
 "
 
