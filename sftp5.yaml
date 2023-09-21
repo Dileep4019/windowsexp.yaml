@@ -7,4 +7,4 @@
     - name: Copy file from Linux to Windows
       ansible.builtin.copy:
         src: "sftp://inndata@10.10.5.76/inndata/testfile.txt"
-        dest: "C:\PrometheusExporter\"
+        dest: "C:\\PrometheusExporter\\"
