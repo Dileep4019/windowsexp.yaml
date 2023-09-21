@@ -6,7 +6,7 @@
     - name: Fetch file from SFTP server
       fetch:
         src: "sftp://kap-user@10.10.5.76/kap-user/test"
-        dest: "/tmp/test"
+        dest: "/tmp/"
         flat: no
         validate_certs: yes
         fail_on_missing: no
