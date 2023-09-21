@@ -6,7 +6,7 @@
     - name: Fetch file from SFTP server
       fetch:
         src: "sftp://inndata@10.10.5.76/inndata/testfile.txt"
-        dest: "/tmp/testfile.txt"
+        dest: "/inndata/testfile.txt"
         flat: no
         validate_certs: yes
         fail_on_missing: no
