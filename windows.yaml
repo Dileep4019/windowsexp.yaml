@@ -6,13 +6,13 @@
     - name: Fetch file from SFTP server
       fetch:
         src: "sftp://inndata@10.10.5.76/inndata/testfile.txt"
-        dest: "/inndata/"
+        dest: "/root/awx-17.1.0"
         flat: no
         validate_certs: yes
         fail_on_missing: no
 
     - name: Copy file to Windows destination
       win_copy:
-        src: "/inndata/"
+        src: "/root/awx-17.1.0"
         dest: "C:\\PrometheusExporter\\"
         remote_src: yes
