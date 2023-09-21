@@ -14,4 +14,4 @@
     - name: Copy file to Windows destination
       win_copy:
         src: "/tmp/test"
-        dest: "C:\\PrometheusExporter\\test"
+        dest: "C:\\PrometheusExporter\\"
