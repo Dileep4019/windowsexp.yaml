@@ -1,32 +1,10 @@
 ---
-- hosts: 10.10.5.183
-  vars:
-      ansible_python_interpreter: /usr/bin/python3
+- name: Copy file from Linux to Windows
+  hosts: 10.10.5.76
+  gather_facts: yes
 
   tasks:
-  - name: Ensure directory exists
-    win_file:
-      path: C:\PrometheusExporter
-      state: directory
-
-  - name: Download file from SFTP server
-    get_url:
-      url: "sftp://{{ sftp_username }}:{{ sftp_password }}@{{ sftp_host }}/{{ sftp_path }}/{{ file_name }}"
-      dest: "/tmp/{{ file_name }}"
-
-  - name: Copy file to Windows 10
-    win_copy:
-      src: "/tmp/{{ file_name }}"
-      dest: "C:\\PrometheusExporter\\{{ file_name }}"
-
-  - name: Remove the downloaded file on Ansible Control Machine
-    file:
-      path: "/tmp/{{ file_name }}"
-      state: absent
-
-  vars:
-    sftp_host: 10.10.5.76
-    sftp_username: kap-user
-    sftp_password: 123!@#
-    sftp_path: /kap-user/
-    file_name: test
+    - name: Copy file from Linux to Windows
+      ansible.builtin.copy:
+        src: /path/to/source/file.txt
+        dest: C:\path\to\destination\file.txt
