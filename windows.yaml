@@ -4,4 +4,4 @@
     - name: Copy files from FileZilla SFTP server to Windows 10
       win_copy:
         src: "sftp://kap-user:123!@#@10.10.5.76/kap-user/test"
-        dest: "C:\\PrometheusExporter\\{{ file_name }} "
+        dest: "C:\\PrometheusExporter\\{{ file_name }}"
