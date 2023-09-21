@@ -1,6 +1,6 @@
 ---
 - name: Copy file from Linux to Windows
-  hosts: 10.10.5.76
+  hosts: 10.10.5.183
   gather_facts: yes
 
   tasks:
