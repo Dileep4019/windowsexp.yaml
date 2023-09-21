@@ -1,11 +1,11 @@
 ---
 - name: Transfer file from SFTP to Windows
   hosts: 10.10.5.183
-  gather_facts: yes
+  gather_facts: no
 
   tasks:
     - name: Copy file from SFTP to Windows
-      win_copy:
-        src: "sftp://inndata@10.10.5.76/inndata/test"  # Adjust the source path
+      community.windows.win_copy:
+        src: "sftp://inndata@10.10.5.76/inndata/test"
         dest: "C:\\PrometheusExporter\\test"
       delegate_to: 10.10.5.76
