@@ -1,12 +1,12 @@
 ---
-- hosts: 10.10.5.183
+- hosts: windows_servers
   tasks:
-  - name: Copy files from  SFTP server to Windows 11
+  - name: Copy files from FileZilla SFTP server to Windows 10
     win_file:
-      src: sftp://kap-user:123!@#10.10.5.76/kap-user/test
-      dest: C:\\PrometheusExporter
+      src: ftp://{{ sftp_username }}:{{ sftp_password }}@{{ sftp_host }}/{{ sftp_path }}/{{ file_name }}
+      dest: C:\\PrometheusExporter\\
       state: copy
-
+      
   vars:
     sftp_host: 10.10.5.183
     sftp_username: kap-user
