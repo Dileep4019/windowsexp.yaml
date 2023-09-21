@@ -1,14 +1,13 @@
 ---
-- name: testing windows
+- name: Transfer files from SFTP to Windows
   hosts: 10.10.5.183
-  tasks:
+  gather_facts: yes
 
-     - name: sftp transfer files
-       expect:
-        win_command: "winscp.com /command \"open sftp://mysftp@10.10.5.76\" \"get /sftp-upload/Ping/Replicadb C:\\kapalya-drivers\" \"exit\""
-        responses:
-          "(yes/no)?": "yes\n"
-          "password: ": "123!@#\n"
-        timeout: 30
-        echo: yes
-        spawn: yes
+  tasks:
+    - name: Run WinSCP Command
+      win_command: "winscp.com /command \"open sftp://mysftp@10.10.5.76\" \"get /sftp-upload/Ping/Replicadb C:\\kapalya-drivers\" \"exit\""
+      register: win_command_result
+
+    - name: Display WinSCP Output
+      debug:
+        var: win_command_result.stdout_lines
