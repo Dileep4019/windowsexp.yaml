@@ -5,7 +5,7 @@
     win_file:
       src: ftp://{{ sftp_username }}:{{ sftp_password }}@{{ sftp_host }}/{{ sftp_path }}/{{ file_name }}
       dest: C:\\PrometheusExporter\\
-      state: copy
+      state: file
       
   vars:
     sftp_host: 10.10.5.76
