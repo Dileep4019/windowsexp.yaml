@@ -1,12 +1,16 @@
 ---
 - hosts: 10.10.5.183
   tasks:
-  - name: Copy files from FileZilla SFTP server to Windows 10
+  - name: Ensure directory exists
     win_file:
-      src: ftp://{{ sftp_username }}:{{ sftp_password }}@{{ sftp_host }}/{{ sftp_path }}/{{ file_name }}
+      path: C:\PrometheusExporter
+      state: directory
+
+  - name: Copy files from FileZilla SFTP server to Windows 10
+    win_copy:
+      src: sftp://{{ sftp_username }}:{{ sftp_password }}@{{ sftp_host }}/{{ sftp_path }}/{{ file_name }}
       dest: C:\PrometheusExporter\{{ file_name }}
-      state: file
-      
+
   vars:
     sftp_host: 10.10.5.76
     sftp_username: kap-user
