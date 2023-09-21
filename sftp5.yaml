@@ -6,10 +6,20 @@
       path: C:\PrometheusExporter
       state: directory
 
-  - name: Copy files from FileZilla SFTP server to Windows 10
+  - name: Download file from SFTP server
+    get_url:
+      url: "sftp://{{ sftp_username }}:{{ sftp_password }}@{{ sftp_host }}/{{ sftp_path }}/{{ file_name }}"
+      dest: "/tmp/{{ file_name }}"
+
+  - name: Copy file to Windows 10
     win_copy:
-      src: sftp://{{ sftp_username }}:{{ sftp_password }}@{{ sftp_host }}/{{ sftp_path }}/{{ file_name }}
-      dest: C:\PrometheusExporter\{{ file_name }}
+      src: "/tmp/{{ file_name }}"
+      dest: "C:\PrometheusExporter\{{ file_name }}"
+
+  - name: Remove the downloaded file on Ansible Control Machine
+    file:
+      path: "/tmp/{{ file_name }}"
+      state: absent
 
   vars:
     sftp_host: 10.10.5.76
