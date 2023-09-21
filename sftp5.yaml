@@ -9,8 +9,7 @@
         $sftpPassword = "123!@#"
         $sftpHost = "10.10.5.76"
         $remotePath = "/kap-user/test"
-        $localPath = "C:\Users\Public\Downloads"
-"
+        $localPath = "C:\\Users\\Public\\Downloads\\"
 
         $sftpSession = New-SFTPSession -ComputerName $sftpHost -Credential (New-Object PSCredential -ArgumentList $sftpUser, (ConvertTo-SecureString -String $sftpPassword -AsPlainText -Force))
         Get-SFTPFile -SessionId $sftpSession.SessionId -RemoteFile $remotePath -LocalPath $localPath
@@ -20,5 +19,5 @@
 
     - name: Copy files to destination folder
       win_copy:
-        src: "C:\Users\Public\Downloads"
-        dest: "C:\PrometheusExporter"
+        src: "C:\\Users\\Public\\Downloads\\"
+        dest: "C:\\PrometheusExporter\\"
