@@ -1,5 +1,5 @@
 ---
-- hosts: windows_servers
+- hosts: 10.10.5.183
   tasks:
   - name: Copy files from FileZilla SFTP server to Windows 10
     win_file:
@@ -8,7 +8,7 @@
       state: copy
       
   vars:
-    sftp_host: 10.10.5.183
+    sftp_host: 10.10.5.76
     sftp_username: kap-user
     sftp_password: 123!@#
     sftp_path: /kap-user/
