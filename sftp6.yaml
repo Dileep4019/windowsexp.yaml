@@ -5,7 +5,7 @@
     - name: Copy file from Unix server to Windows 10 machine
       ansible.windows.win_copy:
         src: /kap-user/test
-        dest: C:\PrometheusExporter\
+        dest: C:\Users
       delegate_to: "{{ ansible_ssh_host }}"
       become: yes
       become_user: inndata
