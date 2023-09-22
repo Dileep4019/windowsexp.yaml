@@ -8,4 +8,4 @@
       community.windows.win_copy:
         src: "sftp://inndata@10.10.5.76/inndata/test"
         dest: "/tmp/
-      delegate_to: 10.10.5.76
+        delegate_to: 10.10.5.76
