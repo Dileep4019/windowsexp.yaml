@@ -1,18 +1,8 @@
----
-- name: Copy file from Unix server to Windows server
-  hosts: 10.10.5.183
-  gather_facts: no
-  vars:
-    source_host: 10.10.5.76
-    source_username: inndata
-    source_password: "123!@#"
-    source_path: "/kap-user/"
-    source_filename: "test"
-    destination_host: 10.10.5.183
-    destination_path: "C:\\PrometheusExporter"
-
+- hosts: 10.10.5.76
+  user: 10.10.5.75
   tasks:
-  - name: copy file to Windows server
-    ansible.windows.win_copy:
-      src: "{{ source_path }}{{ source_filename }}"
-      dest: "{{ destination_path }}\\{{ source_filename }}"
+    - name: copy file from machine1 to local
+      fetch: 
+        src: /inndata/test
+        dest: /tmp/
+    
