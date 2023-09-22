@@ -1,20 +1,27 @@
 ---
-- name: Transfer files from SFTP to Windows
-  hosts: 10.10.5.183  # Replace with your target host/group
+- name: Transfer file from SFTP to AWX Linux Server
+  hosts: 10.10.5.75
+  gather_facts: yes # You may set this to yes if you need to gather facts about the target system.
+
+  vars:
+    sftp_user: inndata
+    sftp_password: 123!@#
+    sftp_host: 10.10.5.76
+    remote_file_path: /inndata/test
+    local_file_path: /root/
 
   tasks:
-    - name: Download files from SFTP
-      win_shell: |
-        # Create a PowerShell script file to execute sftp command
-        echo "sftp kap-user@10.10.5.76:/kap-user/test/ /root/awx/" > sftp_script.ps1
-        # Execute the PowerShell script
-        powershell.exe -File sftp_script.ps1
-      args:
-        executable: powershell.exe
-      environment:
-        PSFTP_PASS: "123!@#"  # Replace with your SFTP password
+    - name: Download file from SFTP
+      community.general.sftp:
+        host: "{{ sftp_host }}"
+        user: "{{ sftp_user }}"
+        password: "{{ sftp_password }}"
+        remote_file: "{{ remote_file_path }}"
+        dest: "{{ local_file_path }}"
+        mode: get
 
-    - name: Copy files to Windows server
-      win_copy:
-        src: "/root/awx/"
-        dest: "C:\\PrometheusExporter"
+    - name: Ensure the file is transferred successfully
+      assert:
+        that: 
+          - "ansible_local['file_info']['exists'] == True"
+          - "ansible_local['file_info']['isdir'] == False"
