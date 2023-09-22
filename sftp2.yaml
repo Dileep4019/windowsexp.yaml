@@ -1,11 +1,11 @@
 ---
-- name: Transfer file from SFTP to Windows
-  hosts: 10.10.5.183
+- name: Transfer file from SFTP to awx
+  hosts: 10.10.5.75
   gather_facts: no
 
   tasks:
-    - name: Copy file from SFTP to Windows
+    - name: Copy file from SFTP to awx
       community.windows.win_copy:
         src: "sftp://inndata@10.10.5.76/inndata/test"
-        dest: "C:\\PrometheusExporter\\test"
+        dest: "/tmp/
       delegate_to: 10.10.5.76
