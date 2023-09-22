@@ -1,5 +1,7 @@
 - hosts: 10.10.5.76
   user: 10.10.5.75
+  gather_facts: yes
+  
   tasks:
     - name: copy file from machine1 to local
       fetch: 
