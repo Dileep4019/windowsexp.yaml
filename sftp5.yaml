@@ -1,10 +1,10 @@
 ---
-- name: Copy file from Linux to Windows
-  hosts: 10.10.5.183
+- name: Copy file from Linux to awx
+  hosts: 10.10.5.75
   gather_facts: yes
 
   tasks:
     - name: Copy file from Linux to Windows
       ansible.builtin.copy:
         src: "sftp://inndata@10.10.5.76/inndata/testfile.txt"
-        dest: "C:\\PrometheusExporter\\"
+        dest: "/root/
