@@ -1,20 +1,15 @@
 ---
-- name: Transfer file from MinIO to Windows Server
+- name: Transfer file from MinIO to Local
   hosts: 10.10.5.183
-  gather_facts: yes
+  gather_facts: true
 
   tasks:
     - name: Download file from MinIO
       community.general.aws_s3:
         bucket: security
         object: /mnt/data/security/SQLite/sqlite3.exe
-        dest: /tmp/sqlite3.exe
+        dest: //PrometheusExporter//
         aws_access_key: your_access_key
         aws_secret_key: your_secret_key
         mode: get
         overwrite: yes
-
-    - name: Copy file to Windows Server
-      win_copy:
-        src: /tmp/sqlite3.exe
-        dest: C://PrometheusExporter//
