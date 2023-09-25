@@ -4,10 +4,10 @@
 
   tasks:
     - name: download file from MinIO
-      community.general.aws_s3:
+      community.general.minio_copy:
         bucket: /security/
         object: /mnt/data/security/SQLite/sqlite3.exe
-        dest: //PrometheusExporter//
+        dest: /PrometheusExporter/
         aws_access_key: DW1v3EfdBLR0J1GVhdjC
         aws_secret_key: 5VytN79seVFxeYmAmwLlYUF4O0rp0Hlnex50GyTf
         mode: get
