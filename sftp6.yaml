@@ -4,7 +4,6 @@
 
   tasks:
     - name: download file from MinIO
-      community.general.aws_s3:
         bucket: security
         object: /mnt/data/security/SQLite/sqlite3.exe
         dest: //PrometheusExporter//
