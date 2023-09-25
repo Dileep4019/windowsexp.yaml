@@ -1,19 +1,14 @@
----
-- name: Transfer files from MinIO
+- name: Download file from MinIO
   hosts: 10.10.5.183
-  gather_facts: false
+  gather_facts: true
 
   tasks:
-    - name: Download files
-      hosts: 10.10.5.76
-      gather_facts: false
-      tasks:
-        - name: Download file from MinIO
-          community.general.aws_s3:
-            bucket: security
-            object: /mnt/data/security/SQLite/sqlite3.exe
-            dest: /PrometheusExporter/
-            aws_access_key: your_access_key
-            aws_secret_key: your_secret_key
-            mode: get
-            overwrite: yes
+    - name: Download file from MinIO
+      community.general.aws_s3:
+        bucket: security
+        object: /mnt/data/security/SQLite/sqlite3.exe/
+        dest: /PrometheusExporter/
+        aws_access_key: DW1v3EfdBLR0J1GVhdjC
+        aws_secret_key: 5VytN79seVFxeYmAmwLlYUF4O0rp0Hlnex50GyTf
+        mode: get
+        overwrite: yes
