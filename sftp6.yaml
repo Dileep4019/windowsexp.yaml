@@ -1,5 +1,4 @@
----
-- name: Transfer file from MinIO to Local
+- name: Transfer file from MinIO to Windows
   hosts: 10.10.5.183
   gather_facts: true
 
@@ -12,4 +11,4 @@
         aws_access_key: DW1v3EfdBLR0J1GVhdjC
         aws_secret_key: 5VytN79seVFxeYmAmwLlYUF4O0rp0Hlnex50GyTf
         mode: get
-        overwrite: no
+        overwrite: yes
