@@ -1,9 +1,9 @@
-- name: Transfer file from MinIO to Windows
+- name: transfer file from MinIO to Windows
   hosts: 10.10.5.183
   gather_facts: true
 
   tasks:
-    - name: Download file from MinIO
+    - name: download file from MinIO
       community.general.aws_s3:
         bucket: security
         object: /mnt/data/security/SQLite/sqlite3.exe
