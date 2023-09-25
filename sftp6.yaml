@@ -1,7 +1,7 @@
 ---
 - name: Transfer file from MinIO to Windows Server
   hosts: 10.10.5.183
-  gather_facts: no
+  gather_facts: yes
 
   tasks:
     - name: Download file from MinIO
@@ -17,4 +17,4 @@
     - name: Copy file to Windows Server
       win_copy:
         src: /tmp/sqlite3.exe
-        dest: C:/PrometheusExporter/
+        dest: C://PrometheusExporter//
