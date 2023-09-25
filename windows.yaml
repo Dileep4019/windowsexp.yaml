@@ -1,5 +1,5 @@
 ---
-- name: Download files from MinIO
+- name: Transfer files from MinIO
   hosts: 10.10.5.183
   gather_facts: false
 
