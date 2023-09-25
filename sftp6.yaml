@@ -2,7 +2,7 @@
   hosts: 10.10.5.183
   gather_facts: true
 
-  task:
+  tasks:
     - name: Download file from MinIO
       community.general.aws_s3:
         bucket: security
