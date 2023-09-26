@@ -1,14 +1,21 @@
-- name: Download file from MinIO
-  hosts: 10.10.5.183
-  gather_facts: true
-
+---
+- name: Copy file from Minio to Windows
+  hosts: 10.10.5.76  # Replace with the actual alias or IP of your Minio server
   tasks:
-    - name: Download file from MinIO
-      community.general.aws_s3:
-        bucket: security
-        object: /mnt/data/security/SQLite/sqlite3.exe/
-        dest: /PrometheusExporter/
-        aws_access_key: DW1v3EfdBLR0J1GVhdjC
-        aws_secret_key: 5VytN79seVFxeYmAmwLlYUF4O0rp0Hlnex50GyTf
-        mode: get
-        overwrite: yes
+    - name: Download file from Minio
+      win_get_url:
+        url: "http://10.10.5.76:9001/security/SQLite/sqlite3.exe"
+        dest: "C:\\PrometheusExporter\\sqlite3.exe"
+      delegate_to: 10.10.5.75
+
+- name: Verify file copied
+  hosts: 10.10.5.183  # Replace with the actual alias or IP of your Windows server
+  tasks:
+    - name: Check if file exists
+      stat:
+        path: "C:\\PrometheusExporter\\sqlite3.exe"
+      register: file_check
+
+    - name: Print result
+      debug:
+        msg: "File {{ 'does' if file_check.stat.exists else 'does not' }} exist"
