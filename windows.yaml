@@ -1,6 +1,7 @@
 ---
 - name: Copy file from Minio to Windows
   hosts: 10.10.5.76  # Replace with the actual alias or IP of your Minio server
+  gatherfacts: yes
   tasks:
     - name: Download file from Minio
       win_get_url:
