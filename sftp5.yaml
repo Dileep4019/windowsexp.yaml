@@ -1,10 +1,12 @@
 ---
-- name: Copy file from Linux to awx
-  hosts: 10.10.5.75
-  gather_facts: yes
-
+- hosts: 10.10.5.183
+  become: yes
+  environment:
+    MINIO_ACCESS_KEY: "DW1v3EfdBLR0J1GVhdjC"
+    MINIO_SECRET_KEY: "5VytN79seVFxeYmAmwLlYUF4O0rp0Hlnex50GyTf"
   tasks:
-    - name: Copy file from Linux to Windows
-      ansible.builtin.copy:
-        src: "sftp://inndata@10.10.5.76/inndata/testfile.txt"
-        dest: "/root/
+    - name: Download file from Minio
+      win_get_url:
+        url: "https://10.10.5.76:9001/security/SQLite/security/SQLite/"
+        dest: C://PrometheusExporter//
+        validate_certs: no
