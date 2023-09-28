@@ -7,6 +7,6 @@
   tasks:
     - name: Download file from Minio
       win_get_url:
-        url: "https://10.10.5.76:9001/security/SQLite/security/SQLite/sqldiff.exe/sqlite3_analyzer.exe/sqlite3.exe"
+        url: "https://10.10.5.76:9001/security/SQLite/security/SQLite//sqlite3.exe/xl.meta"
         dest: C://PrometheusExporter//
         validate_certs: no
