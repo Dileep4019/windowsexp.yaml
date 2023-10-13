@@ -2,12 +2,12 @@
 - hosts: 10.10.5.182
   become: no
   environment:
-    MINIO_ACCESS_KEY: "DW1v3EfdBLR0J1GVhdjC"
-    MINIO_SECRET_KEY: "5VytN79seVFxeYmAmwLlYUF4O0rp0Hlnex50GyTf"
+    MINIO_ACCESS_KEY: "SfE6ufvGqkoifcgM62li"
+    MINIO_SECRET_KEY: "gRJuFGMMgo3yr7iMPBWkxlpIkQK4JXrjcXRJjPxq"
   tasks:
    - name: Download file from Minio
      win_get_url:
        url: "https://10.10.5.81:9091/shinobi/Arc_11102023/Arc_11102023/Arc.exe"
-       dest: "C:\\Users\\Arc.exe"
+       dest: C:\\Users\\
        validate_certs: no
 
