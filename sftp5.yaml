@@ -1,6 +1,6 @@
 ---
 - hosts: 10.10.5.182
-  become: yes
+  become: no
   environment:
     MINIO_ACCESS_KEY: "DW1v3EfdBLR0J1GVhdjC"
     MINIO_SECRET_KEY: "5VytN79seVFxeYmAmwLlYUF4O0rp0Hlnex50GyTf"
