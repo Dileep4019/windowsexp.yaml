@@ -7,7 +7,7 @@
   tasks:
    - name: Download file from Minio
      win_get_url:
-       url: "https://10.10.5.81:9091/shinobi/Arc_11102023/Arc_11102023/Arc.exe"
-       dest: C:\\Users\\
-       validate_certs: no
+      url: "https://10.10.5.76:9001/security/SQLite/sqlite3.exe"
+      dest: C:\\Users\\
+      validate_certs: no
 
