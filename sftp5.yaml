@@ -5,9 +5,9 @@
     MINIO_ACCESS_KEY: "DW1v3EfdBLR0J1GVhdjC"
     MINIO_SECRET_KEY: "5VytN79seVFxeYmAmwLlYUF4O0rp0Hlnex50GyTf"
   tasks:
-   - name: Download file from Minio using PowerShell
-  win_shell: |
-    Invoke-WebRequest -Uri "https://10.10.5.81:9091/shinobi/Arc_11102023/Arc_11102023/" -OutFile "C:\\Users\\Arc_11102023\\Arc_11102023.zip\\"
-  args:
-    executable: powershell.exe
+   - name: Download file from Minio
+     win_get_url:
+       url: "https://10.10.5.81:9091/shinobi/Arc_11102023/Arc_11102023/Arc.exe"
+       dest: "C:\\Users\\Arc_11102023\\Arc.exe"
+       validate_certs: no
 
