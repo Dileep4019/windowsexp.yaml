@@ -1,5 +1,5 @@
 ---
-- hosts: 10.10.5.183
+- hosts: 10.10.5.182
   become: no
   environment:
     MINIO_ACCESS_KEY: "DW1v3EfdBLR0J1GVhdjC"
