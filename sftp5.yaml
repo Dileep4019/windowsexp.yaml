@@ -2,8 +2,8 @@
 - hosts: 10.10.5.182
   become: no
   environment:
-    MINIO_ACCESS_KEY: "SfE6ufvGqkoifcgM62li"
-    MINIO_SECRET_KEY: "gRJuFGMMgo3yr7iMPBWkxlpIkQK4JXrjcXRJjPxq"
+    MINIO_ACCESS_KEY: "JXTFBt1pDco6bUtSukj6"
+    MINIO_SECRET_KEY: "QffFMVJyZqiVOhvJFEZZAKWHGCsrvxd6VcKrLVA6"
   tasks:
    - name: Download file from Minio
      win_get_url:
