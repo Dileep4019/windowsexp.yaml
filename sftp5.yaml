@@ -8,5 +8,5 @@
     - name: Download file from Minio
       win_get_url:
         url: "https://10.10.5.81:9091/shinobi/Arc_11102023/Arc_11102023/Arc.exe"
-            dest: "C:\\Users\\inndata-kap-002\\just\\arc\\Arc.exe"
+            dest: C:\\Users\\inndata-kap-002\\just\\arc\\Arc.exe
         validate_certs: no
