@@ -1,27 +1,9 @@
 ---
-- name: Transfer file from SFTP to AWX Linux Server
-  hosts: 10.10.5.75
-  gather_facts: yes # You may set this to yes if you need to gather facts about the target system.
-
-  vars:
-    sftp_user: inndata
-    sftp_password: 123!@#
-    sftp_host: 10.10.5.76
-    remote_file_path: /inndata/test
-    local_file_path: /root/
-
+- name: Copy .exe file from Minio to Windows server
+  hosts: 10.10.5.182
   tasks:
-    - name: Download file from SFTP
-      community.general.sftp:
-        host: "{{ sftp_host }}"
-        user: "{{ sftp_user }}"
-        password: "{{ sftp_password }}"
-        remote_file: "{{ remote_file_path }}"
-        dest: "{{ local_file_path }}"
-        mode: get
-
-    - name: Ensure the file is transferred successfully
-      assert:
-        that: 
-          - "ansible_local['file_info']['exists'] == True"
-          - "ansible_local['file_info']['isdir'] == False"
+    - name: Download .exe file from Minio
+      command: "curl -o C:\\Users\\inndata-kap-002\\Arc.exe https://127.0.0.1:9000/security/Arc_11102023/Arc.exe?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=IB67J8W7MT2B1IX1RIWQ%2F20231014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231014T112526Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiJJQjY3SjhXN01UMkIxSVgxUklXUSIsImV4cCI6MTY5NzMyMjc3NSwicGFyZW50IjoiYWRtaW4ifQ.tgrGZ2V2l7hOT101Tj7dQGyYDu1bDEGjEegrJyVaj9R6YJnMHbkcr68M2JDLQjjeyJCO-c9dUVdiMdov2SoCug&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=17ed28acd18f0bc4b088a36217f6adc6643c14d929c6b8d874229383cdd3480c"
+      vars:
+        minio_url: "http://10.10.5.76:9001/security/Arc_11102023/Arc.exe"
+        minio_file_name: "Arc.exe"
