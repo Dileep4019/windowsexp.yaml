@@ -5,15 +5,13 @@
   tasks:
     - name: Download Windows Exporter zip
       win_get_url:
-        url: https://github.com/prometheus-community/windows_exporter/releases/download/v0.16.0/windows_exporter-v0.16.0.zip
-        dest: C:\\Users\\windows_exporter.zip
+        url: https://github.com/prometheus-community/windows_exporter/releases/download/v0.16.0/windows_exporter-0.16.0.zip
+        dest: C:\Users\windows_exporter.zip
 
     - name: Unzip Windows Exporter
-      win_shell: Expand-Archive -Path C:\\Users\\windows_exporter.zip -DestinationPath C:\\Program Files\\windows_exporter
+      win_shell: Expand-Archive -Path C:\Users\windows_exporter.zip -DestinationPath C:\Program Files\windows_exporter
       become: yes
 
     - name: Start Windows Exporter
-      win_service:
-        name: windows_exporter
-        start_mode: auto
-        state: started
+      win_shell: Start-Process -FilePath "C:\Program Files\windows_exporter\windows_exporter.exe"
+      become: yes
