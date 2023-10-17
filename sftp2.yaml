@@ -15,9 +15,8 @@
       when: choco_check.rc != 0
       become: no
 
-    - name: Configure Minio client
-      win_command: mc config host add minio https://10.10.5.81:9091 VcHxDwuaLPK0AD1gI7AP OJapKe0HKwmiSkWcrtIpnW2ZSBI95JE8fu8n67ny
-      become: no
+    - name: Install MinIO Client
+      win_shell: choco install minio-client -y
 
     - name: Copy Executables from Minio
       win_shell: 
