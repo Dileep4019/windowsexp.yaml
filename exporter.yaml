@@ -5,7 +5,7 @@
   tasks:
     - name: Download Windows Exporter zip
       win_get_url:
-        url: https://github.com/prometheus-community/windows_exporter/releases/download/v0.16.0/windows_exporter-0.16.0.zip
+        url: https://github.com/prometheus-community/windows_exporter/releases/download/v0.16.0/windows_exporter-v0.16.0.zip
         dest: C:\\Users\\windows_exporter.zip
 
     - name: Unzip Windows Exporter
