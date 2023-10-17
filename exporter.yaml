@@ -14,3 +14,4 @@
       
     - name: Start Windows Exporter
       win_shell: Start-Process C:\\Program Files\\windows_exporter\\windows_exporter.zip"
+      become: no
