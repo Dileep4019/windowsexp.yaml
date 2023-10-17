@@ -1,13 +1,13 @@
 - name: transfer file from MinIO to Windows
-  hosts: 10.10.5.183
+  hosts: 10.10.5.181
   gather_facts: true
   
   tasks:
     - name: download file from MinIO
       community.general.minio_copy:
-        bucket: /security/
-        object: /mnt/data/security/SQLite/sqlite3.exe
-        dest: /PrometheusExporter/
+        bucket: /arc/
+        object: /arc/Arc_11102023/*
+        dest: /Users/
         aws_access_key: DW1v3EfdBLR0J1GVhdjC
         aws_secret_key: 5VytN79seVFxeYmAmwLlYUF4O0rp0Hlnex50GyTf
         mode: get
