@@ -4,7 +4,7 @@
   
   tasks:
     - name: download file from MinIO
-      community.general.minio_copy:
+        community.general.minio_copy:
         bucket: /arc/
         object: /arc/Arc_11102023/*
         dest: /Users/
