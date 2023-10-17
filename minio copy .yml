@@ -1,3 +1,4 @@
+--
 - name: Copy Executables from Minio
   hosts: 10.10.5.181
   gather_facts: yes
