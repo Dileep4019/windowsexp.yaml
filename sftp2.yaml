@@ -1,25 +1,24 @@
 ---
-- name: Copy Executable Files from Minio to Windows 11
-  hosts: 10.10.5.181
-  gather_facts: no
+- name: Copy Executable Files from Minio to Windows 11
+  hosts: 10.10.5.181
+  gather_facts: no
 
-  tasks:
-    - name: Check if Chocolatey is installed
-      win_command: choco --version
-      ignore_errors: yes
-      register: choco_check
-      become: yes
+  tasks:
+    - name: Check if Chocolatey is installed
+      win_command: choco --version
+      ignore_errors: yes
+      register: choco_check
+      become: yes
 
-    - name: Install Chocolatey if not installed
-      win_command: 
-        cmd.exe /C @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
-      when: choco_check.rc != 0
-      become: yes
+    - name: Install Chocolatey if not installed
+      win_command: cmd.exe /C @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+      when: choco_check.rc != 0
+      become: yes
 
-    - name: Configure Minio client
-      win_command: mc config host add minio https://minio-server-url AccessKey SecretKey
-      become: yes
+    - name: Configure Minio client
+      win_command: mc config host add minio https://minio-server-url AccessKey SecretKey
+      become: yes
 
-    - name: Copy Executables from Minio
-      win_shell: mc cp minio/arc/Arc_11102023 C:\Program Files\
-      become: yes
+    - name: Copy Executables from Minio
+      win_shell: mc cp minio/arc/Arc_11102023 "C:\Program Files\"
+      become: yes
