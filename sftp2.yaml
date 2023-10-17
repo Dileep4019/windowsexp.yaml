@@ -20,5 +20,6 @@
       become: yes
 
     - name: Copy Executables from Minio
-      win_shell: mc cp arc/Arc_11102023/* "C:\\Program Files\\"
+      win_shell: 
+        aws s3 cp s3://arc/Arc_11102023/ "C:\Program Files\" --recursive
       become: yes
