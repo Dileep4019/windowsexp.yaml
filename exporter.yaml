@@ -14,4 +14,4 @@
       
     - name: Start Windows Exporter
       win_shell: Start-Process -FilePath "C:\Program Files\windows_exporter\windows_exporter.exe"
-      become: yes
+      become: no
