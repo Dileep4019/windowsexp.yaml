@@ -4,7 +4,7 @@
   tasks:
     - name: Copy files using PowerShell script
       win_shell: |
-        $source = "s3://arc/Arc_11102023/"
+        $source = s3://arc/Arc_11102023/
         $destination = "C:\Program Files\"
         Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
         aws s3 cp $source $destination --recursive
