@@ -1,26 +1,19 @@
 ---
 - name: Install Windows Exporter
-  hosts: 10.10.5.183  # Replace with the name of your Windows 10 host or group
-  become: yes
+  hosts: 10.10.5.181  # Replace with the appropriate host/group name from your inventory
+  gather_facts: no
   tasks:
-    - name: Download Windows Exporter
+    - name: Download Windows Exporter zip
       win_get_url:
-        url: https://github.com/prometheus-community/windows_exporter/releases/download/v0.18.1/windows_exporter-0.18.1-amd64.exe
-        dest: C:\\Prometheus\\windows_exporter.exe
-      register: download_result
+        url: https://github.com/prometheus-community/windows_exporter/releases/download/v0.16.0/windows_exporter-0.16.0.zip
+        dest: C:\Users\windows_exporter.zip
 
-    - name: Ensure Prometheus Directory Exists
-      win_file:
-        path: C:\Prometheus
-        state: directory
+    - name: Unzip Windows Exporter
+      win_shell: Expand-Archive -Path C:\Users\windows_exporter.zip -DestinationPath C:\Program Files\windows_exporter
+      become: yes
 
-    - name: Create Windows Exporter Service
-      win_shell: |
-        New-Service -Name "Windows-Exporter" -BinaryPathName "C:\Prometheus\windows_exporter.exe --collectors.enabled="cpu,logon,logical_disk,mem,net,os,system,thermal_zone"" -DisplayName "Prometheus Windows Exporter" -Description "Prometheus Windows Exporter Service" -StartupType Automatic
-      when: download_result.changed
-
-    - name: Start Windows Exporter Service
+    - name: Start Windows Exporter
       win_service:
-        name: Windows-Exporter
+        name: windows_exporter
+        start_mode: auto
         state: started
-      when: download_result.changed
