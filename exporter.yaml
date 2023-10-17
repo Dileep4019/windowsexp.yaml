@@ -13,4 +13,4 @@
       become: no
       
     - name: Start Windows Exporter
-      win_shell: "Start-Process 'C:\\Program Files\\windows_exporter\\windows_exporter.zip'"
+      win_shell: Start-Process C:\\Program Files\\windows_exporter\\windows_exporter.zip"
