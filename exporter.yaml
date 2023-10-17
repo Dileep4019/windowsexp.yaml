@@ -13,5 +13,6 @@
       become: no
       
     - name: Start Windows Exporter
-      win_shell: Start-Process -FilePath "C:\Program Files\windows_exporter"
-      become: no
+      win_service:
+        name: windows_exporter
+        state: started
