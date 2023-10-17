@@ -13,6 +13,4 @@
       become: no
       
     - name: Start Windows Exporter
-      win_service:
-        name: windows_exporter
-        state: started
+      win_shell: "Start-Process 'C:\\Program Files\\windows_exporter\\windows_exporter.zip'"
