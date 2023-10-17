@@ -9,7 +9,7 @@
         dest: C:\Users\windows_exporter.zip
 
     - name: Unzip Windows Exporter
-      win_shell: Expand-Archive -Path C:\Users\windows_exporter.zip -DestinationPath "C:\Program Files\windows_exporter"
+      win_shell: Expand-Archive -Path C:\Users\windows_exporter.zip -DestinationPath "C:\Program Files\windows_exporter\"
       become: no
       
     - name: Start Windows Exporter
