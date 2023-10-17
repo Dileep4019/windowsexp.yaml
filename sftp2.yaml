@@ -20,5 +20,5 @@
       become: yes
 
     - name: Copy Executables from Minio
-      win_shell: mc cp minio/arc/Arc_11102023 "C:\Program Files\"
+      win_shell: mc cp /arc/Arc_11102023 "C:\\Program Files\\"
       become: yes
