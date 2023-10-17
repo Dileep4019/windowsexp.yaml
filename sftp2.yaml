@@ -15,9 +15,6 @@
       when: choco_check.rc != 0
       become: no
 
-    - name: Install MinIO Client
-      win_shell: choco install minio-client -y
-
     - name: Copy Executables from Minio
       win_shell: 
         aws s3 cp s3://arc/Arc_11102023/* C:\Program Files\ --recursive
