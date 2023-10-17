@@ -4,10 +4,18 @@
   gather_facts: yes
 
   tasks:
-    - name: Copy files using s3_copy module
-      community.general.s3_copy:
-        source: "s3://arc/Arc_11102023/"
-        destination: "C:\\Program Files\\"
-        mode: recursive
-        validate_certs: no
+    - name: Create PowerShell script
+      win_shell: |
+        $scriptPath = "C:\Users\Administrator\copy_from_minio.ps1"
+        $scriptContent = @"
+$source = "s3://arc/Arc_11102023/"
+$destination = "C:\Program Files\"
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+aws s3 cp $source $destination --recursive
+"@
+        Set-Content -Path $scriptPath -Value $scriptContent
+      become: yes
+
+    - name: Run PowerShell script
+      win_shell: powershell.exe -File C:\Users\Administrator\copy_from_minio.ps1
       become: yes
