@@ -1,17 +1,34 @@
-- name: Transfer file from SFTP to Windows
-  hosts: 10.10.5.183
-  gather_facts: yes
-
+---
+- name: Install Windows Exporter in Windows
+  hosts: 10.10.5.181
+  gather_facts: no
   tasks:
-    - name: Fetch file from SFTP server
-      fetch:
-        src: "/kap-user/test"  # Adjust this to the correct SFTP path
-        dest: "/tmp/test"
-        flat: yes
-        validate_certs: no
-        fail_on_missing: yes
-
-    - name: Copy file to Windows server
-      win_copy:
-        src: "/tmp/test"
-        dest: "C:\\PrometheusExporter\\test"
+    - name: Create Temp Directory
+      win_shell: |
+        mkdir C:\Users\inndata-kap-001\windows_exporter
+      ignore_errors: yes
+    - name: Download Windows Exporter
+      win_shell: >
+        Invoke-WebRequest -Uri
+        https://github.com/prometheus-community/windows_exporter/releases/download/v0.23.1/windows_exporter-0.23.1-amd64.msi
+        -OutFile C:\Users\inndata-kap-001\windows_exporter\windows_exporter-0.23.1-amd64.msi
+      args:
+        executable: powershell.exe
+    - name: Install Windows Exporter
+      win_shell: >
+        Start-Process msiexec.exe -ArgumentList '/i
+        C:\Users\inndata-kap-001\windows_exporter\windows_exporter-0.23.1-amd64.msi /quiet
+        /norestart' -Wait
+      args:
+        executable: powershell.exe
+    - name: Start Windows Exporter Service
+      win_shell: |
+        Start-Service -Name windows_exporter
+      args:
+        executable: powershell.exe
+    - name: Set Windows Exporter Service to Automatic Startup
+      win_shell: |
+        Set-Service -Name windows_exporter -StartupType 'Automatic'
+      args:
+        executable: powershell.exe
+        
