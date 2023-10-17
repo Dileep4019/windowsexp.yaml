@@ -5,12 +5,12 @@
   tasks:
     - name: Set WinRM to allow Basic authentication
       win_shell: Set-Item -Path WSMan:\localhost\Service\Auth\Basic -Value $true
-      become: yes
+      become: no
 
     - name: Set WinRM to allow unencrypted traffic
       win_shell: Set-Item -Path WSMan:\localhost\Service\AllowUnencrypted -Value $true
-      become: yes
+      become: no
 
     - name: Restart WinRM service
       win_shell: Restart-Service WinRM
-      become: yes
+      become: no
