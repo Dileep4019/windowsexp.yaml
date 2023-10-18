@@ -1,0 +1,9 @@
+---
+- name: Copy Executable Files from Minio to Windows 11
+  hosts: 10.10.5.181
+  gather_facts: no
+
+  tasks:
+     - name: Install AWS CLI
+       win_shell: choco install awscli -y
+       become: no
