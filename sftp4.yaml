@@ -1,9 +1,9 @@
 ---
-- name: Copy .exe file from Minio to Windows server
-  hosts: 10.10.5.182
+- name: Copy Executable Files from Minio to Windows 11
+  hosts: 10.10.5.181
+  gather_facts: no
+
   tasks:
-    - name: Download .exe file from Minio
-      command: "curl -o C:\\Users\\inndata-kap-002\\Arc.exe https://127.0.0.1:9000/security/Arc_11102023/Arc.exe?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=IB67J8W7MT2B1IX1RIWQ%2F20231014%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231014T112526Z&X-Amz-Expires=604800&X-Amz-Security-Token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NLZXkiOiJJQjY3SjhXN01UMkIxSVgxUklXUSIsImV4cCI6MTY5NzMyMjc3NSwicGFyZW50IjoiYWRtaW4ifQ.tgrGZ2V2l7hOT101Tj7dQGyYDu1bDEGjEegrJyVaj9R6YJnMHbkcr68M2JDLQjjeyJCO-c9dUVdiMdov2SoCug&X-Amz-SignedHeaders=host&versionId=null&X-Amz-Signature=17ed28acd18f0bc4b088a36217f6adc6643c14d929c6b8d874229383cdd3480c"
-      vars:
-        minio_url: "http://10.10.5.76:9001/security/Arc_11102023/Arc.exe"
-        minio_file_name: "Arc.exe"
+    - name: Install AWS CLI
+      win_shell: choco install awscli -y
+      become: no
