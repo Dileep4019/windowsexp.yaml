@@ -4,6 +4,6 @@
   gather_facts: no
 
   tasks:
-     - name: Install AWS CLI
-       win_shell: choco install awscli -y
-       become: no
+    - name: Install AWS CLI
+      win_shell: choco install awscli -y
+      become: no
