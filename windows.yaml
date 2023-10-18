@@ -6,8 +6,8 @@
   tasks:
     - name: Copy PowerShell script to Windows machine
       win_copy:
-        src: "C:\\Temp\\copy_from_minio.ps1" # Update this path to the actual location of your PowerShell script
-        dest: "C:\\Users\\Public\\copy_from_minio.ps1"
+        src: C:\\Temp\\copy_from_minio.ps1 # Update this path to the actual location of your PowerShell script
+        dest: C:\\Users\\Public\\
       become: no
 
     - name: Execute PowerShell script
