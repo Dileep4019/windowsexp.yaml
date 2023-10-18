@@ -6,7 +6,7 @@
   tasks:
     - name: Create PowerShell script
       win_shell: |
-        $scriptPath = "C:\Users\Administrator\copy_from_minio.ps1"
+        $scriptPath = "C:\temp\copy_from_minio.ps1"
         $scriptContent = @"
 $source = "s3://arc/Arc_11102023/"
 $destination = "C:\Program Files\"
@@ -17,5 +17,5 @@ aws s3 cp $source $destination --recursive
       become: yes
 
     - name: Run PowerShell script
-      win_shell: powershell.exe -File C:\Users\Administrator\copy_from_minio.ps1
+      win_shell: powershell.exe -File C:\temp\copy_from_minio.ps1
       become: yes
