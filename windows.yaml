@@ -21,10 +21,6 @@
       when: choco_check.rc != 0
       become: no
 
-    - name: Configure Minio client
-      win_command: mc config host add minio https://10.10.5.81:9091 minioadmin minio_admin
-      become: no
-
     - name: Copy Executables from Minio
       win_shell: mc cp minio/arc/Arc_11102023 C:\Users\
       become: no
