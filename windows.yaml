@@ -1,22 +1,15 @@
 ---
-- name: Copy file from Minio to Windows
-  hosts: 10.10.5.76  # Replace with the actual alias or IP of your Minio server
-  gatherfacts: yes
-  tasks:
-    - name: Download file from Minio
-      win_get_url:
-        url: "http://10.10.5.76:9001/security/SQLite/sqlite3.exe"
-        dest: "C:\\PrometheusExporter\\sqlite3.exe"
-      delegate_to: 10.10.5.75
+- name: Copy Executables from Minio
+  hosts: 10.10.5.181
+  gather_facts: yes
 
-- name: Verify file copied
-  hosts: 10.10.5.183  # Replace with the actual alias or IP of your Windows server
   tasks:
-    - name: Check if file exists
-      stat:
-        path: "C:\\PrometheusExporter\\sqlite3.exe"
-      register: file_check
+    - name: Copy PowerShell script to Windows machine
+      win_copy:
+        src: C:\Users\inndata-kap-001\minio\copy_from_minio.ps1 # Update this path to the actual location of your PowerShell script
+        dest: C:\Users\Public\copy_from_minio.ps1
+      become: no
 
-    - name: Print result
-      debug:
-        msg: "File {{ 'does' if file_check.stat.exists else 'does not' }} exist"
+    - name: Execute PowerShell script
+      win_shell: powershell.exe -File C:\Users\Public\copy_from_minio.ps1
+      become: no
