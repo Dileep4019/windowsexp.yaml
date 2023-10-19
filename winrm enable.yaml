@@ -1,6 +1,6 @@
 ---
 - name: Enable WinRM
-  hosts: 10.10.5.181  # Replace with the appropriate host/group name from your AWX inventory
+  hosts: 10.10.5.182  # Replace with the appropriate host/group name from your AWX inventory
   gather_facts: no
   tasks:
     - name: Set WinRM to allow Basic authentication
